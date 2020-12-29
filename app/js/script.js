@@ -1,0 +1,1 @@
+"use strict";document.addEventListener("DOMEventListner",function(){let a=document.querySelector(".box");let b=document.querySelectorAll(".menu__item");b.forEach(function(a){a.innerText="Hello its Babel";});});
