@@ -25,13 +25,14 @@
         "node-sass": "^5.0.0"
     },
     "browserslist": [
-        "last 4 versions",
+        "last 15 versions",
         "not IE >= 1",
         "not ExplorerMobile >= 1",
         "not Edge < 40",
         "not op_mob < 46",
         "not bb < 10"
     ],
+
     "dependencies": {
         "@babel/polyfill": "^7.12.1"
     }

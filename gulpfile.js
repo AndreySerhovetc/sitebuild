@@ -27,11 +27,12 @@ function createFiles() {
 
 function createFolders() {
     return src("*.*", { read: false })
-        .pipe(dest("newfolder /scss/"))
-        .pipe(dest("newfolder /fonts/"))
-        .pipe(dest("newfolder /css/"))
-        .pipe(dest("newfolder /js/"))
-        .pipe(dest("newfolder /img/"))
+        .pipe(dest("app /scss/"))
+        .pipe(dest("app /fonts/"))
+        .pipe(dest("app /css/"))
+        .pipe(dest("app /js/"))
+        .pipe(dest("app /img/"))
+        .pipe(dest("dist /"))
 }
 
 function convertStyles() {
@@ -63,7 +64,7 @@ function imgCompressed() {
 }
 
 function htmlInclude() {
-    return src(["app/pages/**/*.html"])
+    return src(["app/pages/*.html"])
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file'
@@ -78,7 +79,7 @@ function watchFiles() {
     watch("app/css/*.css").on('change', sync.reload);
 
     watch("app/_image", imgCompressed);
-    watch("app/pages/**/*.html", htmlInclude);
+    watch("app/pages/*.html", htmlInclude);
 
     //Fonts
     watch("app/fonts/**.ttf", series(convertFonts, fontsStyle))
@@ -97,7 +98,7 @@ exports.struct = createFiles;
 
 
 
-exports.default = parallel(htmlInclude, convertStyles, watchFiles, browserSync, series(convertFonts, fontsStyle));
+exports.default = parallel(htmlInclude, convertStyles, watchFiles, browserSync);
 
 
 
